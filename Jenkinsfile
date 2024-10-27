@@ -14,14 +14,14 @@ pipeline {
             steps {
                 echo 'Hello, world'
                 sayHello 'Dave'
-
+                
                 echo 'The value of foo is : ' + GlobalVars.foo
                 echo "Hello ${params.increment_age}"
                 script {
-                    sh "echo $increment_age"
+                    int integerValue = increment_age.toInteger()
                     def person = new SampleClass()
                     person.age = 21
-                    person.increaseAge('$increment_age')
+                    person.increaseAge(${integerValue})
                     echo 'Incremented age, is now : ' + person.age
                 }
             }
