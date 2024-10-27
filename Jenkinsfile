@@ -6,8 +6,7 @@ import com.cleverbuilder.SampleClass
 pipeline {
     agent any
     parameters {
-      text(name: 'VARS_CONTENT', defaultValue: 'CHICKEN: ', description: 'Favorite Bird')
-    }
+        string(defaultValue: "my default value", description: 'This is my parameter', name: 'my_parameter') ;
     stages {
         stage('Demo') {
             steps {
