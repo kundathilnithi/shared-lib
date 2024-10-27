@@ -18,7 +18,7 @@ pipeline {
                 echo 'The value of foo is : ' + GlobalVars.foo
                 echo "Hello ${params.increment_age}"
                 script {
-                    int integerValue = increment_age.toInteger()
+                    Integer integerValue = increment_age.toInteger()
                     def person = new SampleClass()
                     person.age = 21
                     echo "The integer value is: ${integerValue}"
