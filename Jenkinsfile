@@ -21,7 +21,7 @@ pipeline {
        
                     def person = new SampleClass()
                     person.age = 21
-                    person.increaseAge(20)
+                    person.increaseAge(${params.increment_age})
                     echo 'Incremented age, is now : ' + person.age
                 }
             }
