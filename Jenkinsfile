@@ -17,7 +17,7 @@ pipeline {
                     properties([
                         parameters { string(name1: 'Age', defaultValue: '10', description: 'Age', trim: true) }
 
-                    ])
+                    ]) }
                     def person = new SampleClass()
                     person.age = 21
                     person.increaseAge(60)
