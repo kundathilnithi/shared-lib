@@ -21,7 +21,7 @@ pipeline {
                       sh "echo $increment_age"
                     def person = new SampleClass()
                     person.age = 21
-                    person.increaseAge(toInteger($increment_age))
+                    person.increaseAge(toInteger("$increment_age"))
                     echo 'Incremented age, is now : ' + person.age
                 }
             }
