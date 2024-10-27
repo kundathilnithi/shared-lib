@@ -7,6 +7,7 @@ pipeline {
     agent any
     parameters {
         string(defaultValue: "20", description: 'This is my parameter', name: 'increment_age') ;
+    }
     
     stages {
         stage('Demo') {
