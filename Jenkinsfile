@@ -21,7 +21,7 @@ pipeline {
                     int integerValue = increment_age.toInteger()
                     def person = new SampleClass()
                     person.age = 21
-                    person.increaseAge('${integerValue}')
+                    person.increaseAge("${integerValue}")
                     echo 'Incremented age, is now : ' + person.age
                 }
             }
