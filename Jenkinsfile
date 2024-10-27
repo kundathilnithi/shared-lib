@@ -14,6 +14,10 @@ pipeline {
                 echo 'The value of foo is : ' + GlobalVars.foo
 
                 script {
+                    properties([
+                        parameters { string(name: 'Age', defaultValue: '10', description: 'Age', trim: true) }
+
+                    ])
                     def person = new SampleClass()
                     person.age = 21
                     person.increaseAge(60)
