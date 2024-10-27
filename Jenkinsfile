@@ -16,12 +16,12 @@ pipeline {
                 sayHello 'Dave'
 
                 echo 'The value of foo is : ' + GlobalVars.foo
-                echo "Hello ${params.increment_age}"
+                def age = ${params.increment_age}"
                 script {
        
                     def person = new SampleClass()
                     person.age = 21
-                    person.increaseAge(${params.increment_age})
+                    person.increaseAge(${increment_age})
                     echo 'Incremented age, is now : ' + person.age
                 }
             }
