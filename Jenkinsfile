@@ -7,6 +7,7 @@ pipeline {
     agent any
     parameters {
         string(defaultValue: "my default value", description: 'This is my parameter', name: 'my_parameter') ;
+    }
     stages {
         stage('Demo') {
             steps {
