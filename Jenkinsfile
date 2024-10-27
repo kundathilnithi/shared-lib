@@ -15,7 +15,7 @@ pipeline {
 
                 script {
                     properties([
-                        parameters { string(name: 'Age', defaultValue: '10', description: 'Age', trim: true) }
+                        parameters { string(name1: 'Age', defaultValue: '10', description: 'Age', trim: true) }
 
                     ])
                     def person = new SampleClass()
