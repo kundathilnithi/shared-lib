@@ -5,6 +5,9 @@ import com.cleverbuilder.SampleClass
 
 pipeline {
     agent any
+    parameters {
+      text(name: 'VARS_CONTENT', defaultValue: 'CHICKEN: ', description: 'Favorite Bird')
+    }
     stages {
         stage('Demo') {
             steps {
@@ -14,11 +17,7 @@ pipeline {
                 echo 'The value of foo is : ' + GlobalVars.foo
 
                 script {
-                    properties([
-                        parameters([ { string(name1: 'Age', defaultValue: '10', description: 'Age', trim: true) }
-
-                    ]) 
-                    ])
+       
                     def person = new SampleClass()
                     person.age = 21
                     person.increaseAge(60)
