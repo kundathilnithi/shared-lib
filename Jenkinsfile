@@ -6,7 +6,7 @@ import com.cleverbuilder.SampleClass
 pipeline {
     agent any
     parameters {
-        string(defaultValue: "20", description: 'This is my parameter', name: 'incremenet_age') ;
+        string(defaultValue: "20", description: 'This is my parameter', name: 'increment_age') ;
     
     stages {
         stage('Demo') {
