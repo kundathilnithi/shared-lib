@@ -4,7 +4,7 @@ package com.awsec2
 class TerragruntPipeline {
 
     // String terragruntConfig
-    String command
+   
 
     // TerragruntPipeline(String terragruntConfig) {
     //     this.terragruntConfig = terragruntConfig
@@ -12,8 +12,8 @@ class TerragruntPipeline {
 
     void init() {
      
-         command = "terragrunt -v"
-         runCommand(command)
+         sh "terragrunt -v"
+
     }
 
     // void plan() {
