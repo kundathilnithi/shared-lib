@@ -4,6 +4,7 @@ package com.awsec2
 class TerragruntPipeline {
 
     // String terragruntConfig
+    String command
 
     // TerragruntPipeline(String terragruntConfig) {
     //     this.terragruntConfig = terragruntConfig
