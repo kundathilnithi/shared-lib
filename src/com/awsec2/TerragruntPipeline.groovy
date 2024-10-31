@@ -10,20 +10,20 @@ class TerragruntPipeline {
     // }
 
     void init() {
-        sh "pwd"
+     
         sh "terragrunt init  "
     }
 
-    void plan() {
-        sh "terragrunt plan  "
-    }
+    // void plan() {
+    //     sh "terragrunt plan  "
+    // }
 
-    void apply() {
-        input message: 'Approve deployment?', ok: 'Deploy'
-        sh "terragrunt apply   -auto-approve"
-    }
+    // void apply() {
+    //     input message: 'Approve deployment?', ok: 'Deploy'
+    //     sh "terragrunt apply   -auto-approve"
+    // }
 
-    void output() {
-        sh "terragrunt output"
-    }
+    // void output() {
+    //     sh "terragrunt output"
+    // }
 }
