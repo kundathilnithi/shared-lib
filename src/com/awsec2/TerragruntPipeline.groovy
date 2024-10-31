@@ -11,7 +11,8 @@ class TerragruntPipeline {
 
     void init() {
      
-        sh "terragrunt -v "
+         String command = "terragrunt -v"
+        runCommand(command)
     }
 
     // void plan() {
