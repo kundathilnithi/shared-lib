@@ -11,7 +11,7 @@ class TerragruntPipeline {
 
     void init() {
      
-        sh "terragrunt init  "
+        sh "terragrunt -v "
     }
 
     // void plan() {
