@@ -3,23 +3,24 @@ package com.awsec2
 
 class TerragruntPipeline {
 
-    String terragruntConfig
+    // String terragruntConfig
 
-    TerragruntPipeline(String terragruntConfig) {
-        this.terragruntConfig = terragruntConfig
-    }
+    // TerragruntPipeline(String terragruntConfig) {
+    //     this.terragruntConfig = terragruntConfig
+    // }
 
     void init() {
-        sh "terragrunt init --terragrunt-config ${terragruntConfig}"
+        sh "pwd"
+        sh "terragrunt init --terragrunt-config "
     }
 
     void plan() {
-        sh "terragrunt plan --terragrunt-config ${terragruntConfig}"
+        sh "terragrunt plan --terragrunt-config "
     }
 
     void apply() {
         input message: 'Approve deployment?', ok: 'Deploy'
-        sh "terragrunt apply --terragrunt-config ${terragruntConfig} -auto-approve"
+        sh "terragrunt apply --terragrunt-config  -auto-approve"
     }
 
     void output() {
