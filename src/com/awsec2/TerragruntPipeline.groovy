@@ -11,16 +11,16 @@ class TerragruntPipeline {
 
     void init() {
         sh "pwd"
-        sh "terragrunt init --terragrunt-config "
+        sh "terragrunt init  "
     }
 
     void plan() {
-        sh "terragrunt plan --terragrunt-config "
+        sh "terragrunt plan  "
     }
 
     void apply() {
         input message: 'Approve deployment?', ok: 'Deploy'
-        sh "terragrunt apply --terragrunt-config  -auto-approve"
+        sh "terragrunt apply   -auto-approve"
     }
 
     void output() {
