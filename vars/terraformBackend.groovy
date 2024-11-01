@@ -7,14 +7,14 @@ def call(Map config) {
         bucket: config.bucket ?: "default-terraform-state-bucket",
         key: config.key ?: "terraform/${config.appName}/${config.environment}/terraform.tfstate",
         region: config.region ?: "us-west-2",
-        dynamodb_table: config.dynamodb_table ?: "terraform-lock-table"
+        
     ]
 
     // Read the backend template file
     def templateFile = libraryResource('terraform/awsBackendConfig.hcl')
     def engine = new SimpleTemplateEngine()
-    def backendContent = engine.createTemplate(templateFile).make(backendConfig).toString()
-
+    def backendContent = engine.createTemplate(templateFile)
+     def backendContent1 = backendContent.make(binding).toString()
     // Write the populated backend configuration to a temporary file
     writeFile file: 'backend.tf', text: backendContent
 
