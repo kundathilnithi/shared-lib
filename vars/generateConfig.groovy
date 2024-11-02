@@ -17,7 +17,7 @@ echo "$templateFile"
    echo "${configContent}"
 
    // Write the populated backend configuration to a temporary file
-    //writeFile file: 'backend.tf', text: configContent
+    writeFile file: 'backend.tf', text: "Hello"
 } 
 
 // def call(Map params) {
