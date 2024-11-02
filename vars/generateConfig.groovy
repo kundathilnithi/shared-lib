@@ -6,6 +6,13 @@ echo "${params.appName}"
 
 def templateFile = libraryResource('config.template')
 echo "$templateFile"
+ def engine = new SimpleTemplateEngine()
+ //     def binding = [
+//         appName    : 'myapp',
+//         environment: 'dev',
+//         region     : 'us-east1'
+//     ]
+
 } 
 
 // def call(Map params) {
