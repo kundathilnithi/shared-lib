@@ -1,8 +1,23 @@
-terraform {
-  backend "s3" {
-    bucket         = "${bucket}"
-    key            = "${key}"
-    region         = "${region}"
+# terraform {
+#   backend "s3" {
+#     bucket         = "${bucket}"
+#     key            = "${key}"
+#     region         = "${region}"
    
+#   }
+# }
+
+#Keep your backend DRY
+remote_state {
+  backend = "s3"
+  generate = {
+    path      = "backend.tf"
+    if_exists = "overwrite_terragrunt"
+  }
+  config = {
+    bucket = "${bucket}"
+    key = "${key}"
+    region         = "${region}"
+
   }
 }
