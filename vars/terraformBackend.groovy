@@ -1,25 +1,36 @@
 import groovy.text.SimpleTemplateEngine
 
-// Define a function to configure Terraform backend for AWS
-def call(Map config) {
-    // Define default backend configuration parameters
-    def backendConfig = [
+    // Method to render the Terraform backend template
+def renderTerraformBackendConfig(Map config) {
+def engine = new SimpleTemplateEngine()
+def templateText = '''
+terraform {
+  backend "s3" {
+    bucket         = "${bucket}"
+    key            = "${key}"
+    region         = "${region}"
+   
+  }
+}
+'''
+  // Default values for the backend configuration
+    def binding = [
         bucket: config.bucket ?: "default-terraform-state-bucket",
-        key: config.key ?: "terraform/${config.appName}/${config.environment}/terraform.tfstate",
-        region: config.region ?: "us-west-2",
+        key: config.key ?: "path/to/terraform.tfstate",
+        region: config.region ?: "us-east-1",
         
     ]
 
-    // Read the backend template file
-    def templateFile = libraryResource('terraform/awsBackendConfig.hcl')
-    def engine = new SimpleTemplateEngine()
-    def backendContent = engine.createTemplate(templateFile)
-     def backendContent1 = backendContent.make(binding).toString()
-    // Write the populated backend configuration to a temporary file
+    def template = engine.createTemplate(templateText)
+    def backendContent = template.make(binding).toString()
     writeFile file: 'backend.tf', text: backendContent
-
-    // Run Terraform commands to initialize the backend with the custom config
+     // Run Terraform commands to initialize the backend with the custom config
     sh """
       terraform init -backend-config=backend.tf
     """
+}
+    
+    
+
+   
 }
