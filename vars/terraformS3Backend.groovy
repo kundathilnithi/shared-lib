@@ -6,8 +6,8 @@ def call(Map config) {
     def backendConfig = [
         bucket: config.get('bucket', 'default-terraform-state-bucket'),
         key: config.get('key', "terraform/${config.appName}/${config.environment}/terraform.tfstate"),
-        region: config.get('region', 'us-west-2'),
-        dynamodb_table: config.get('dynamodb_table', 'terraform-lock-table')
+        region: config.get('region', 'us-east-1'),
+       
     ]
 
     // Load the backend template file
