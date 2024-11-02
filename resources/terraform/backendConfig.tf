@@ -3,5 +3,6 @@ terraform {
     bucket         = "${bucket}"
     key            = "${key}"
     region         = "${region}"
+
   }
 }

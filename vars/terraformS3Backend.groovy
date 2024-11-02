@@ -1,21 +1,21 @@
 import groovy.text.SimpleTemplateEngine
 
-// Define a function to configure Terraform S3 backend for AWS
+// Function to configure the Terraform backend for AWS S3
 def call(Map config) {
-    // Define default configuration parameters if not provided
+    // Define default configuration parameters, allowing overrides
     def backendConfig = [
-        bucket: config.bucket ?: "default-terraform-state-bucket",
-        key: config.key ?: "terraform/${config.appName}/${config.environment}/terraform.tfstate",
-        region: config.region ?: "us-west-2",
-        dynamodb_table: config.dynamodb_table ?: "terraform-lock-table"
+        bucket: config.get('bucket', 'default-terraform-state-bucket'),
+        key: config.get('key', "terraform/${config.appName}/${config.environment}/terraform.tfstate"),
+        region: config.get('region', 'us-west-2'),
+        dynamodb_table: config.get('dynamodb_table', 'terraform-lock-table')
     ]
 
     // Load the backend template file
-    def templateFile = libraryResource('terraform/s3BackendConfig.tf')
+    def templateFile = libraryResource('terraform/backendConfig.tf')
     def engine = new SimpleTemplateEngine()
     def backendContent = engine.createTemplate(templateFile).make(backendConfig).toString()
 
-    // Write the backend configuration to a file in the workspace
+    // Write the backend configuration to a temporary file in the workspace
     writeFile file: 'backend.tf', text: backendContent
 
     // Initialize Terraform with the generated backend configuration
