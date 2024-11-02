@@ -4,6 +4,8 @@ def call(Map params) {
 
 echo "${params.appName}"
 
+def templateFile = libraryResource('config.template')
+echo "$templateFile"
 } 
 
 // def call(Map params) {
