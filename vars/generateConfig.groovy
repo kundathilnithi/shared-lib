@@ -18,7 +18,7 @@ echo "$templateFile"
    //def content = "Hello"
   
    // Write the populated backend configuration to a temporary file
-    writeFile file: 'backend.tf', text: configContent, encoding: "UTF-8"
+    writeFile file: 'backend.tf', text: "${configContent}, encoding: "UTF-8"
    
 } 
 
