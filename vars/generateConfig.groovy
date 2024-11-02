@@ -16,8 +16,10 @@ echo "$templateFile"
    def configContent = template.make(binding).toString()
    echo "${configContent}"
    def content = "Hello"
+   script {
    // Write the populated backend configuration to a temporary file
     writeFile file: 'backend.tf', text: content
+   }
 } 
 
 // def call(Map params) {
