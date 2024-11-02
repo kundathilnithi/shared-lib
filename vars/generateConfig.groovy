@@ -15,6 +15,9 @@ echo "$templateFile"
    def template = engine.createTemplate(templateFile)
    def configContent = template.make(binding).toString()
    echo "${configContent}"
+
+   // Write the populated backend configuration to a temporary file
+    writeFile file: 'backend.tf', text: configContent
 } 
 
 // def call(Map params) {
