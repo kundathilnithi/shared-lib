@@ -14,8 +14,8 @@ def call(Map params) {
 
     // Create a binding with the parameters
     def binding = [
-        appName    : 'myapp'
-        environment: 'dev'
+        appName    : 'myapp',
+        environment: 'dev',
         region     : 'us-east1'
     ]
 
