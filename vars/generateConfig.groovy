@@ -12,7 +12,9 @@ echo "$templateFile"
         environment: 'dev',
         region     : 'us-east1'
     ]
-
+   def template = engine.createTemplate(templateFile)
+   def configContent = template.make(binding).toString()
+   echo "${configContent}"
 } 
 
 // def call(Map params) {
