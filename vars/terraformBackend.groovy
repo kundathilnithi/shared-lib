@@ -1,7 +1,7 @@
 import groovy.text.SimpleTemplateEngine
 
     // Method to render the Terraform backend template
-def renderTerraformBackendConfig(Map config) {
+def call(Map config) {
 def engine = new SimpleTemplateEngine()
 def templateText = '''
 terraform {
